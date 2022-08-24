@@ -15,21 +15,15 @@
 
       <div class="items-box">
         <!-- item 슬라이드 -->
-        <Swiper
-            :modules="modules" 
-            :autoplay= "{
+        <Swiper :modules="modules" :autoplay="{
               delay: 1000,
               disableOnInteraction: false,
-            }" 
-            :loop="true" 
-            :navigation="{
+            }" :loop="true" :navigation="{
               nextEl: '.sw-items-next',
               prevEl: '.sw-items-prev'
-            }" 
-            :pagination="{
+            }" :pagination="{
               el:'.sw-items-pg'
-            }" 
-            class="sw-items">
+            }" class="sw-items">
           <SwiperSlide v-for="(item, index) in slideData" v-bind:key="index">
             <a :href="item.vlink" :style="{background:'url('+ require(`@/assets/images/${item.vimg}`) + ')'}"></a>
           </SwiperSlide>
@@ -103,28 +97,27 @@
       SwiperSlide
     },
     setup() {
-    const slideData = [
-    {
-      vlink:"#",
-      vimg:"mb02_bg.jpg"
-    },
-    {
-      vlink:"#",
-      vimg:"mb03_bg.jpg"
-    },
-    {
-      vlink:"#",
-      vimg:"mb04_bg.jpg"
-    },
-    {
-      vlink:"#",
-      vimg:"mb05_bg.jpg"
-    },
-    {
-      vlink:"#",
-      vimg:"mb06_bg.jpg"
-    },
-    ]
+      const slideData = [{
+          vlink: "#",
+          vimg: "mb02_bg.jpg"
+        },
+        {
+          vlink: "#",
+          vimg: "mb03_bg.jpg"
+        },
+        {
+          vlink: "#",
+          vimg: "mb04_bg.jpg"
+        },
+        {
+          vlink: "#",
+          vimg: "mb05_bg.jpg"
+        },
+        {
+          vlink: "#",
+          vimg: "mb06_bg.jpg"
+        },
+      ]
 
 
       return {
@@ -134,6 +127,26 @@
     }
   }
 </script>
+
+<style>
+  .sw-items-pg .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    opacity: 0.5;
+    margin: 5px;
+    border-radius: 5px;
+    transition: all 0.5s;
+  }
+
+  .sw-items-pg .swiper-pagination-bullet-active {
+    width: 30px;
+    opacity: 1;
+  }
+</style>
+
+
+
 
 <style>
   /* items */
@@ -272,20 +285,6 @@
     z-index: 9;
   }
 
-  .sw-items-pg .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    opacity: 0.5;
-    margin: 5px;
-    border-radius: 5px;
-    transition: all 0.5s;
-  }
-
-  .sw-items-pg .swiper-pagination-bullet-active {
-    width: 30px;
-    opacity: 1;
-  }
 
 
   /* 링크 */
