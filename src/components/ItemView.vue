@@ -3,7 +3,7 @@
   <section class="items">
     <div class="inner clearfix">
       <div class="items-box">
-        <img src="images/mb01_img.png" alt="">
+        <img :src="require('@/assets/images/mb01_img.png')">
 
         <span class="bar"></span>
 
@@ -15,26 +15,24 @@
 
       <div class="items-box">
         <!-- item 슬라이드 -->
-        <div class="swiper-container sw-items">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="#" class="items1"></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="items2"></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="items3"></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="items4"></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="items5"></a>
-            </div>
-
-          </div>
-
+        <Swiper
+            :modules="modules" 
+            :autoplay= "{
+              delay: 1000,
+              disableOnInteraction: false,
+            }" 
+            :loop="true" 
+            :navigation="{
+              nextEl: '.sw-items-next',
+              prevEl: '.sw-items-prev'
+            }" 
+            :pagination="{
+              el:'.sw-items-pg'
+            }" 
+            class="sw-items">
+          <SwiperSlide v-for="(item, index) in slideData" v-bind:key="index">
+            <a :href="item.vlink" :style="{background:'url('+ require(`@/assets/images/${item.vimg}`) + ')'}"></a>
+          </SwiperSlide>
           <!-- 이동버튼 -->
           <button class="sw-items-prev"></button>
           <button class="sw-items-next"></button>
@@ -43,8 +41,9 @@
             <!-- Pangination -->
             <div class="sw-items-pg"></div>
           </div>
-        </div>
+        </Swiper>
       </div>
+
       <div class="items-box">
         <a href="#">
           <h3>창업절차</h3>
@@ -86,8 +85,53 @@
 </template>
 
 <script>
+  import {
+    Swiper,
+    SwiperSlide
+  } from 'swiper/vue';
+  import {
+    Autoplay,
+    Navigation,
+    Pagination
+  } from 'swiper'
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
   export default {
+    components: {
+      Swiper,
+      SwiperSlide
+    },
+    setup() {
+    const slideData = [
+    {
+      vlink:"#",
+      vimg:"mb02_bg.jpg"
+    },
+    {
+      vlink:"#",
+      vimg:"mb03_bg.jpg"
+    },
+    {
+      vlink:"#",
+      vimg:"mb04_bg.jpg"
+    },
+    {
+      vlink:"#",
+      vimg:"mb05_bg.jpg"
+    },
+    {
+      vlink:"#",
+      vimg:"mb06_bg.jpg"
+    },
+    ]
 
+
+      return {
+        modules: [Autoplay, Navigation, Pagination],
+        slideData
+      }
+    }
   }
 </script>
 

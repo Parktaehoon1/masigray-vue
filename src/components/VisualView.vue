@@ -1,7 +1,19 @@
 <template>
 	<!-- visual -->
 	<section class="visual">
-		<Swiper class="sw-visual">
+		<Swiper 
+		:modules="modules"
+		:autoplay= "{
+			delay: 2000,
+			disableOnInteraction: false,
+		}"
+		:loop="true"
+		:navigation= "{
+			nextEl: '.sw-visual-next',
+			prevEl: '.sw-visual-prev'
+			}"
+		class="sw-visual"
+		>
 			<SwiperSlide>
 				<a href="#" class="sw-visual-1"></a>
 			</SwiperSlide>
@@ -14,34 +26,11 @@
 			<SwiperSlide>
 				<a href="#" class="sw-visual-4"></a>
 			</SwiperSlide>
-			<button class="sw-visual-prev">
-			</button>
-			<button class="sw-visual-next">
-			</button>
+
+			<button class="sw-visual-prev"></button>
+			<button class="sw-visual-next"></button>
+
 		</Swiper>
-
-
-
-		<!-- <div class="swiper-container sw-visual">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<a href="#" class="sw-visual-1"></a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#" class="sw-visual-2"></a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#" class="sw-visual-3"></a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#" class="sw-visual-4"></a>
-				</div>
-			</div>
-			<button class="sw-visual-prev">
-			</button>
-			<button class="sw-visual-next">
-			</button>
-		</div> -->
 	</section>
 
 </template>
@@ -49,8 +38,7 @@
 <script>
 	import {
 		Autoplay,
-		Navigation,
-		Pagination
+		Navigation
 	} from 'swiper'
 	import {
 		Swiper,
@@ -58,7 +46,6 @@
 	} from 'swiper/vue';
 	import 'swiper/css';
 	import 'swiper/css/navigation';
-	import 'swiper/css/pagination';
 	export default {
 		components: {
 			Swiper,
@@ -84,7 +71,7 @@
 			// 	},
 			// ]
 			return {
-				modules: [Autoplay, Navigation, Pagination]
+				modules: [Autoplay, Navigation]
 			}
 		}
 
