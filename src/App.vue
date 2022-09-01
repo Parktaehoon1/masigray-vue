@@ -3,10 +3,10 @@
     <GoTop />
     <MobileMenu />
     <MobileDim />
-    <MobileWrap />
+    <MobileWrap :navData="navData"/>
     <FixMenu />
 
-    <HeaderView :headerData="headerData"/>
+    <HeaderView :navData="navData"/>
     <VisualView />
     <ItemView />
     <BevarateView />
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import {ref} from 'vue';
   import GoTop from '@/components/GoTop.vue';
   import MobileMenu from '@/components/MobileMenu.vue';
   import MobileDim from '@/components/MobileDim.vue';
@@ -32,6 +33,7 @@
   import FooterView from '@/components/FooterView.vue';
 
   export default {
+    name: 'App',
     components: {
       GoTop,
       MobileMenu,
@@ -47,7 +49,8 @@
       FooterView
     },
     setup() {
-      const headerData = [
+      const navData = ref([])
+      navData.value = [
         {
           url : '#',
           title : '마시그레이',
@@ -168,10 +171,9 @@
             },
           ]
         },
-     
       ]
       return {
-        headerData
+        navData,
       }
     }
   }

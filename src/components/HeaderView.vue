@@ -14,7 +14,7 @@
 				<a href="index.html" class="logo">마시그래이</a>
 				<div class="gnb">
 					<ul class="menu">
-						<li v-for="(item, index) in headerData" v-bind:key="index">
+						<li v-for="(item, index) in navData" v-bind:key="index">
 							<a :href="item.url">{{item.title}}</a>
 							<ul class="submenu">
 								<li v-for="(subitem, subindex) in item.subarr" v-bind:key="subindex">
@@ -35,7 +35,7 @@
 	import $ from 'jquery';
 	import { onMounted } from 'vue';
 	export default {
-		props: ['headerData'],
+		props: ['navData'],
 		setup() {
 			onMounted(() => {
 				let header = $('.header');
