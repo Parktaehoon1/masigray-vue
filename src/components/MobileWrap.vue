@@ -40,13 +40,14 @@
 </template>
 
 <script>
+	import {useStore} from 'vuex';
+	import {computed} from 'vue';
 	export default {
-
-		props: ['navData'],
 		setup() {
-
+			const store = useStore()
+			const navData = computed (() => store.getters.getNavData);
 			return {
-
+				navData
 			}
 		}
 	}

@@ -33,10 +33,13 @@
 
 <script>
 	import $ from 'jquery';
-	import { onMounted } from 'vue';
+	import { onMounted, computed } from 'vue';
+	import {useStore} from 'vuex';
 	export default {
-		props: ['navData'],
 		setup() {
+			const store = useStore();
+			const navData = computed(()=> store.getters.getNavData);
+
 			onMounted(() => {
 				let header = $('.header');
 				let header_top = $('.header-top');
@@ -67,7 +70,7 @@
 			});
 
 			return {
-
+				navData
 			}
 		}
 
