@@ -33,14 +33,20 @@
 
 <script>
 	import $ from 'jquery';
-	import { onMounted, computed } from 'vue';
-	import {useStore} from 'vuex';
+	import {
+		computed,
+		onUpdated
+	} from 'vue';
+	import {
+		useStore
+	} from 'vuex';
 	export default {
 		setup() {
 			const store = useStore();
-			const navData = computed(()=> store.getters.getNavData);
+			const navData = computed(() => store.getters.getNavData);
+			store.dispatch('fetchNavdata');
 
-			onMounted(() => {
+			onUpdated(() => {
 				let header = $('.header');
 				let header_top = $('.header-top');
 

@@ -8,47 +8,69 @@
 				</div>
 
 
-				<ul class="franchiser-list clearfix">
+				<!-- <ul class="franchiser-list clearfix">
 					<li id="store-1">
-						<!-- <a href="#">
-							<img src="images/shop1.jpg" alt="">
+						<a href="#">
+							<img src="@/assets/images/shop1.jpg" alt="">
 							<span>신천점</span>
-						</a> -->
+						</a>
 					</li>
 
 					<li id="store-2">
-						<!-- <a href="#">
-							<img src="images/shop2.jpg" alt="">
+						<a href="#">
+							<img src="@/assets/images/shop2.jpg" alt="">
 							<span>합천점</span>
-						</a> -->
+						</a>
 					</li>
 
 					<li id="store-3">
-						<!-- <a href="#">
-							<img src="images/shop3.jpg" alt="">
+						<a href="#">
+							<img src="@/assets/images/shop3.jpg" alt="">
 							<span>북현푸르지오점</span>
-						</a> -->
+						</a>
 					</li>
 
 					<li id="store-4">
-						<!-- <a href="#">
-							<img src="images/shop4.jpg" alt="">
+						<a href="#">
+							<img src="@/assets/images/shop4.jpg" alt="">
 							<span>대곡점</span>
-						</a> -->
+						</a>
 					</li>
-				</ul>
+				</ul> -->
+
+        <ul class="franchiser-list clearfix">
+          <li v-for="(item, index) in franchData" :key="index">
+            <a :href="item.franchurl">
+              <img :src="require(`@/assets/images/${item.franchimg}`)">
+              <span>{{item.franchtitle}}</span>
+            </a>
+          </li>
+        </ul>
+
 
 			</div>
 		</section>
 </template>
 
 <script>
+import {useStore} from 'vuex';
+import {computed} from 'vue';
 export default {
+  setup(){
+    const store = useStore();
+    const franchData = computed( () => store.getters.getFranchData);
+    store.dispatch('fetchFranchdata');
 
+    console.log("gasds",franchData)
+
+    return{
+      franchData
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 
 
 /* franchiser */

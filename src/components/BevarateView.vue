@@ -6,9 +6,40 @@
 				<h2>MASIGRAY <b>MENU</b></h2>
 				<span>마시그래이의 다양한 메뉴를 맛보세요</span>
 			</div>
+
+
+			<!-- swiper -->
+			<Swiper :modules="modules" :autoplay="{
+				delay: 3000,
+				disableOnInteraction: false,
+			}" :loop="true" :navigation="{
+				nextEl: '.sw-bevarage-next',
+				prevEl: '.sw-bevarage-prev'
+				}" class="sw-bevarage">
+				<SwiperSlide>
+					<a href="#">
+						<img src="@/assets/images/menu_slide01.png" alt="">
+					</a>
+				</SwiperSlide>
+				<SwiperSlide>
+					<a href="#">
+						<img src="@/assets/images/menu_slide02.png" alt="">
+					</a>
+				</SwiperSlide>
+				<SwiperSlide>
+					<a href="#">
+						<img src="@/assets/images/menu_slide03.png" alt="">
+					</a>
+				</SwiperSlide>
+								<!-- 좌우 버튼 -->
+				<button class="sw-bevarage-prev"></button>
+				<button class="sw-bevarage-next"></button>
+
+			</Swiper>
+
 			<!-- Bevarage 슬라이드 -->
-			<div class="swiper-container sw-bevarage">
-				<!-- 슬라이드 내용 -->
+
+			<!-- <div class="swiper-container sw-bevarage">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<a href="#">
@@ -28,25 +59,41 @@
 				</div>
 
 
-				<!-- 좌우 버튼 -->
 				<button class="sw-bevarage-prev"></button>
 				<button class="sw-bevarage-next"></button>
 
-				<!-- 페이지네이션 -->
 				<div class="sw-bevarage-control">
 					<div class="sw-bevarage-pg"></div>
 				</div>
-				<!-- //페이지네이션 -->
 
-			</div>
+			</div> -->
 
 		</div>
 	</section>
 </template>
 
 <script>
+	import {
+		Autoplay,
+		Navigation
+	} from 'swiper'
+		import {
+		Swiper,
+		SwiperSlide
+	} from 'swiper/vue';
+	import 'swiper/css';
+	import 'swiper/css/navigation';
 	export default {
+		components: {
+			Swiper,
+			SwiperSlide
+		},
+		setup(){
 
+			return{
+				modules: [Autoplay, Navigation]
+			}
+		}
 	}
 </script>
 

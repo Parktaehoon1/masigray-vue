@@ -1,0 +1,23 @@
+[
+    {   
+        "franchurl":"#",
+        "franchimg":"shop1.jpg",
+        "franchtitle":"신천점"
+    },
+    {
+        "franchurl":"#",
+        "franchimg":"shop2.jpg",
+        "franchtitle":"합천점"
+    },
+    {
+        "franchurl":"#",
+        "franchimg":"shop3.jpg",
+        "franchtitle":"북현푸르지오점"
+    },
+    {
+        "franchurl":"#",
+        "franchimg":"shop4.jpg",
+        "franchtitle":"대곡점"
+    }
+
+]
