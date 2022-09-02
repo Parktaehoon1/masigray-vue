@@ -1,136 +1,44 @@
+import axios from 'axios';
 
 const state = {
-    // data를 모아서 관리하는 객체
-    navData : [
-        {
-          url : '#',
-          title : '마시그레이',
-          subarr : [
-            {
-              suburl: '#',
-              subtitle:'회사소개'
-            },
-            {
-              suburl: '#',
-              subtitle:'연역'
-            },
-            {
-              suburl: '#',
-              subtitle:'CEO인사말'
-            },
-            {
-              suburl: '#',
-              subtitle:'BI / 비전'
-            },
-            {
-              suburl: '#',
-              subtitle:'오시는길'
-            },
-          ]
-        },
-        {
-          url : '#',
-          title : '메뉴',
-          subarr : [
-            {
-              suburl: '#',
-              subtitle:'신메뉴'
-            },
-            {
-              suburl: '#',
-              subtitle:'커피'
-            },
-            {
-              suburl: '#',
-              subtitle:'음료'
-            },
-            {
-              suburl: '#',
-              subtitle:'디저트'
-            },
-            {
-              suburl: '#',
-              subtitle:'MD상품'
-            },
-          ]
-        },
-        {
-          url : '#',
-          title : '프랜차이즈',
-          subarr : [
-            {
-              suburl: '#',
-              subtitle:'가맹안내'
-            },
-            {
-              suburl: '#',
-              subtitle:'가맹절차'
-            },
-            {
-              suburl: '#',
-              subtitle:'매장인테리어'
-            },
-            {
-              suburl: '#',
-              subtitle:'커피 아카데미'
-            },
-            {
-              suburl: '#',
-              subtitle:'가맹상담신청'
-            },
-          ]
-        },
-        {
-          url : '#',
-          title : '매장안내',
-          subarr : [
-            {
-              suburl: '#',
-              subtitle:'매장안내'
-            },
-          ]
-        },
-        {
-          url : '#',
-          title : '공지사항',
-          subarr : [
-            {
-              suburl: '#',
-              subtitle:'공지사항'
-            },
-            {
-              suburl: '#',
-              subtitle:'이벤트'
-            },
-          ]
-        },
-        {
-          url : '#',
-          title : '고객의소리',
-          subarr : [
-            {
-              suburl: '#',
-              subtitle:'FAQ'
-            },
-            {
-              suburl: '#',
-              subtitle:'QNA'
-            },
-            {
-              suburl: '#',
-              subtitle:'케이터링'
-            },
-          ]
-        },
-      ]
+  // data를 모아서 관리하는 객체
+  navData: []
 }
-const actions = {}
-const mutations = {}
-const getters= {
-    // state 출력자리
-    getNavData(state){
-        return state.navData;
-      }
+const actions = {
+  // 메뉴 데이터 json 로딩 
+  fetchNavdata({commit}, obj) {
+
+    // 외부 json 파일 로딩
+    axios.get('/data/menu.json')
+      .then(response => {
+        // 서버 또는 파일이 결과가 있을때
+        console.log("commit",commit);
+        console.log("obj",obj);
+        console.log('step 2 : axios : 날린다.', response.data);
+        // mutation을 실행하라..
+        commit('NAV_DATA_INIT', response.data)
+      })
+      .catch(err => console.log(err))
+  }
+}
+const mutations = {
+  NAV_DATA_INIT(state, payload){
+    state.navData = payload;
+    console.log('state', state)
+    console.log('step 3 : mutation 실행', payload);
+  }
+}
+const getters = {
+  // state 출력자리
+  getNavData(state) {
+    console.log('step 4 :getters computed로 감시하고이씀');
+    return state.navData;
+  }
 }
 
-export default {state,actions,mutations,getters};
+export default {
+  state,
+  actions,
+  mutations,
+  getters
+};

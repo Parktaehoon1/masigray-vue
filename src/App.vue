@@ -1,11 +1,11 @@
 <template>
   <div class="wrap">
+
     <GoTop />
     <MobileMenu />
     <MobileDim />
     <MobileWrap />
     <FixMenu />
-
     <HeaderView />
     <VisualView />
     <ItemView />
@@ -31,6 +31,13 @@
   import SnsView from '@/components/SnsView.vue';
   import FooterView from '@/components/FooterView.vue';
 
+  // 공통 관리되는 state 를 참조
+  // 여기서는 actions를 호출하는 용도로 사용.
+  // vuex를 참조하는 객체를 접근하려하면 아래 구문으로 접근
+  import {
+    useStore
+  } from 'vuex';
+
   export default {
     name: 'App',
     components: {
@@ -45,11 +52,16 @@
       BevarateView,
       FranchView,
       SnsView,
-      FooterView
+      FooterView,
     },
     setup() {
-      return {
-      }
+      // 외부에 잇는 menu.json 파일 불러오기 위해 actions 활용
+      const store = useStore();
+      // actions 의 method 를 사용할떄 
+      // store.dispatch('메소드명')
+      store.dispatch('fetchNavdata');
+      console.log('step 1 : dispatch');
+      return {}
     }
   }
 </script>
