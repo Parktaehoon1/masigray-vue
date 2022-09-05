@@ -1,17 +1,21 @@
 <template>
-  <div class="wrap">
+  <div>
+    <ModalView />
 
-    <GoTop />
-    <MobileWrap />
-    <FixMenu />
-    <HeaderView />
-    <VisualView />
-    <ItemView />
-    <BevarateView />
-    <FranchView />
-    <SnsView />
-    <FooterView />
+    <div class="wrap">
 
+      <GoTop />
+      <MobileWrap />
+      <FixMenu />
+      <HeaderView />
+      <VisualView />
+      <ItemView />
+      <BevarateView />
+      <FranchView />
+      <SnsView />
+      <FooterView />
+
+    </div>
   </div>
 </template>
 
@@ -26,7 +30,7 @@
   import FranchView from '@/components/FranchView.vue';
   import SnsView from '@/components/SnsView.vue';
   import FooterView from '@/components/FooterView.vue';
-
+  import ModalView from '@/components/ModalView.vue'
   // 공통 관리되는 state 를 참조
   // 여기서는 actions를 호출하는 용도로 사용.
   // vuex를 참조하는 객체를 접근하려하면 아래 구문으로 접근
@@ -45,6 +49,7 @@
       FranchView,
       SnsView,
       FooterView,
+      ModalView
     },
     setup() {
       // 외부에 잇는 menu.json 파일 불러오기 위해 actions 활용

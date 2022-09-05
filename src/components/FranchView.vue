@@ -61,7 +61,6 @@ export default {
     const franchData = computed( () => store.getters.getFranchData);
     store.dispatch('fetchFranchdata');
 
-    console.log("gasds",franchData)
 
     return{
       franchData
